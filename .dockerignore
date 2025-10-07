@@ -1,0 +1,47 @@
+# Archivos y directorios a ignorar en el build de Docker
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de desarrollo local
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de Git
+.git
+.gitignore
+
+# Archivos de documentación
+README.md
+CHANGELOG.md
+LICENSE.md
+
+# Archivos del frontend (no necesarios en el backend)
+index.html
+styles.css
+script.js
+lugares.js
+imagenes/
+
+# Archivos de PocketBase locales (evitar conflictos)
+pocketbase.exe
+pb_data/*.db*
+pb_data/logs.db*
+pb_data/storage/
+
+# Archivos de Node.js si existieran
+node_modules/
+package*.json
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos temporales
+tmp/
+temp/
