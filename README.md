@@ -12,6 +12,7 @@ Proyecto de mapa interactivo utilizando **ArgenMap del IGN** (Instituto Geográf
 - ✅ Marcadores clickeables en lugares de interés
 - ✅ Modal con información detallada de cada lugar
 - ✅ Galería de fotos para cada ubicación
+- ✅ Foro general y foros específicos por lugar usando PocketBase
 - ✅ Diseño responsive (mobile-friendly)
 - ✅ Fácil personalización de lugares y fotos
 - ✅ Incluye las Islas Malvinas
@@ -26,6 +27,8 @@ mapa-argentina-interactivo/
 ├── script.js           # Lógica del mapa y eventos
 ├── lugares.js          # Datos de los lugares (PERSONALIZA AQUÍ)
 ├── README.md           # Este archivo
+├── pb_migrations/      # Migraciones de PocketBase (colecciones del foro)
+├── pb_data/            # Carpeta creada por PocketBase (datos/local db)
 │
 └── imagenes/          # Carpeta para tus fotos (crear si usas fotos locales)
     ├── lugar1-foto1.jpg
@@ -35,11 +38,31 @@ mapa-argentina-interactivo/
 
 ## 🚀 Cómo Usar
 
-### 1. Abrir el Proyecto
+### 1. Iniciar el backend de PocketBase (opcional pero recomendado)
+
+> Si solo deseas ver el mapa sin foros, puedes saltar esta sección. Para habilitar los foros, sigue estos pasos:
+
+1. Descarga la versión correspondiente a tu sistema operativo desde [pocketbase.io](https://pocketbase.io/docs/).
+2. Descomprime el archivo y coloca el ejecutable dentro de este proyecto (o en cualquier ruta accesible).
+3. En una terminal, navega hasta la carpeta donde esté el ejecutable y levanta el servidor con:
+
+```bash
+pocketbase.exe serve
+```
+
+4. En otra ventana de la terminal (o antes de servir), aplica las migraciones incluidas en `pb_migrations/` la primera vez que configures el backend:
+
+```bash
+pocketbase.exe migrate up
+```
+
+PocketBase quedará disponible en `http://127.0.0.1:8090` por defecto. Si usas otra URL o puerto, edita la constante `POCKETBASE_URL` en `script.js`.
+
+### 2. Abrir el Proyecto
 
 Simplemente abre el archivo `index.html` en tu navegador web favorito (Chrome, Firefox, Edge, etc.).
 
-### 2. Personalizar los Lugares
+### 3. Personalizar los Lugares
 
 Edita el archivo **`lugares.js`** para agregar tus propios lugares:
 
@@ -57,7 +80,7 @@ Edita el archivo **`lugares.js`** para agregar tus propios lugares:
 }
 ```
 
-### 3. Obtener Coordenadas
+### 4. Obtener Coordenadas
 
 Para obtener las coordenadas de un lugar:
 
@@ -67,7 +90,7 @@ Para obtener las coordenadas de un lugar:
 4. Copia las coordenadas en formato: `-34.6037, -58.3816`
 5. En `lugares.js` usa: `coordenadas: [-34.6037, -58.3816]`
 
-### 4. Agregar Tus Fotos
+### 5. Agregar Tus Fotos
 
 Tienes dos opciones:
 
@@ -88,6 +111,10 @@ fotos: ["https://ejemplo.com/foto1.jpg", "https://ejemplo.com/foto2.jpg"];
 ```
 
 ## 🎨 Personalización Avanzada
+
+### Ajustar la URL del backend
+
+Si desplegaste PocketBase en otro servidor o puerto, puedes modificar la constante `POCKETBASE_URL` en `script.js` o definir `window.POCKETBASE_URL` antes de cargar `script.js` en `index.html`.
 
 ### Cambiar Colores
 
@@ -216,6 +243,13 @@ Este proyecto es de código abierto y está disponible para uso personal y educa
 
 - Verifica que `lugares.js` esté cargado antes de `script.js` en el HTML
 - Abre la consola del navegador para ver errores de JavaScript
+
+### El foro no se conecta
+
+- Asegúrate de que el servidor de PocketBase esté corriendo (mensaje "Serving on 127.0.0.1:8090")
+- Ejecuta `pocketbase.exe migrate up` para aplicar la colección `forum_posts`
+- Verifica que no haya bloqueos de CORS o puertos ocupados
+- Revisa la consola del navegador para más detalles del error
 
 ---
 

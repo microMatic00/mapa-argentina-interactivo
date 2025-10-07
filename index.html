@@ -23,7 +23,90 @@
         </p>
       </header>
 
-      <div id="map"></div>
+      <div class="map-container">
+        <div id="map"></div>
+        <button
+          id="open-general-forum"
+          class="forum-btn forum-btn--floating"
+          type="button"
+          title="Abrir foro general"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          aria-controls="general-forum-panel"
+        >
+          <span class="forum-btn__icon">💬</span>
+          <span class="forum-btn__text">Foro</span>
+        </button>
+      </div>
+
+      <div
+        id="general-forum-panel"
+        class="forum-panel"
+        role="dialog"
+        aria-labelledby="general-forum-title"
+        aria-modal="true"
+        hidden
+      >
+        <div class="forum-panel__overlay" data-close-general></div>
+        <div class="forum-panel__content">
+          <button
+            class="forum-panel__close"
+            type="button"
+            aria-label="Cerrar foro general"
+            data-close-general
+          >
+            &times;
+          </button>
+          <section class="forum" aria-labelledby="general-forum-title">
+            <div class="forum__header">
+              <div class="forum__headline">
+                <h2 id="general-forum-title">Foro general</h2>
+              </div>
+              <p>
+                Comparte experiencias, datos útiles y recomendaciones sobre
+                cualquier destino del mapa.
+              </p>
+            </div>
+            <div
+              id="general-forum-messages"
+              class="forum__messages"
+              role="list"
+            ></div>
+            <form id="general-forum-form" class="forum__form" novalidate>
+              <div class="forum__form-row">
+                <label for="general-name" class="sr-only">Nombre</label>
+                <input
+                  type="text"
+                  id="general-name"
+                  name="name"
+                  placeholder="Tu nombre (opcional)"
+                  autocomplete="name"
+                />
+              </div>
+              <div class="forum__form-row">
+                <label for="general-message" class="sr-only">Mensaje</label>
+                <textarea
+                  id="general-message"
+                  name="message"
+                  placeholder="Escribe tu mensaje"
+                  required
+                  minlength="5"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="forum__form-actions">
+                <button type="submit">Publicar</button>
+                <span
+                  id="general-forum-feedback"
+                  class="forum__feedback"
+                  role="status"
+                  aria-live="polite"
+                ></span>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
 
       <!-- Modal -->
       <div id="modal" class="modal">
@@ -33,6 +116,80 @@
           <div id="modal-body">
             <p id="modal-description"></p>
             <div id="modal-gallery" class="gallery"></div>
+            <div class="modal-actions">
+              <button
+                id="open-place-forum"
+                class="forum-btn forum-btn--modal"
+                type="button"
+                title="Ver comentarios del lugar"
+                aria-expanded="false"
+                aria-controls="modal-forum"
+              >
+                <span class="forum-btn__icon">💭</span>
+                <span class="forum-btn__text">Ver comentarios</span>
+              </button>
+            </div>
+            <section
+              id="modal-forum"
+              class="forum forum--modal"
+              aria-labelledby="place-forum-title"
+              hidden
+            >
+              <div class="forum__header">
+                <div class="forum__headline">
+                  <h3 id="place-forum-title">Foro del lugar</h3>
+                </div>
+                <p>
+                  Deja tus comentarios y responde a otras personas sobre este
+                  sitio específico.
+                </p>
+              </div>
+              <button
+                class="forum-panel__close forum-panel__close--inline"
+                type="button"
+                aria-label="Cerrar foro del lugar"
+                data-close-place
+              >
+                &times;
+              </button>
+              <div
+                id="place-forum-messages"
+                class="forum__messages"
+                role="list"
+              ></div>
+              <form id="place-forum-form" class="forum__form" novalidate>
+                <div class="forum__form-row">
+                  <label for="place-name" class="sr-only">Nombre</label>
+                  <input
+                    type="text"
+                    id="place-name"
+                    name="name"
+                    placeholder="Tu nombre (opcional)"
+                    autocomplete="name"
+                  />
+                </div>
+                <div class="forum__form-row">
+                  <label for="place-message" class="sr-only">Mensaje</label>
+                  <textarea
+                    id="place-message"
+                    name="message"
+                    placeholder="Comparte tu experiencia"
+                    required
+                    minlength="5"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="forum__form-actions">
+                  <button type="submit">Enviar</button>
+                  <span
+                    id="place-forum-feedback"
+                    class="forum__feedback"
+                    role="status"
+                    aria-live="polite"
+                  ></span>
+                </div>
+              </form>
+            </section>
           </div>
         </div>
       </div>
@@ -43,6 +200,7 @@
 
     <!-- Custom JS -->
     <script src="lugares.js"></script>
+    <script src="https://unpkg.com/pocketbase/dist/pocketbase.umd.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
