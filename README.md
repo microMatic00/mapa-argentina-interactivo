@@ -253,4 +253,64 @@ Este proyecto es de código abierto y está disponible para uso personal y educa
 
 ---
 
+## 🚀 Cómo Levantar el Proyecto
+
+### Opción 1: Solo el Mapa (sin foros)
+
+Si solo quieres ver el mapa interactivo sin funcionalidad de foros:
+
+1. Abre directamente el archivo `index.html` en tu navegador web
+2. ¡Listo! El mapa debería funcionar perfectamente
+
+### Opción 2: Proyecto Completo (con foros)
+
+Para usar todas las funcionalidades, incluyendo los foros:
+
+#### 1. Levantar el Backend (PocketBase)
+
+```bash
+# Aplicar migraciones de la base de datos (solo la primera vez)
+./pocketbase.exe migrate up
+
+# Iniciar el servidor de PocketBase
+./pocketbase.exe serve
+```
+
+mail: monstercomunn@gmail.com
+contra: monstercomun
+
+El servidor se ejecutará en: `http://127.0.0.1:8090`
+
+#### 2. Levantar el Frontend (Servidor Web Local)
+
+Abre una segunda terminal y ejecuta uno de estos comandos:
+
+**Con Node.js:**
+
+```bash
+npx serve -l 3000
+```
+
+**Con Python:**
+
+```bash
+python -m http.server 3000
+```
+
+El servidor web se ejecutará en: `http://localhost:3000`
+
+#### 3. Acceder a la Aplicación
+
+- **Aplicación principal**: http://localhost:3000
+- **Panel de administración de PocketBase**: http://127.0.0.1:8090/_/
+
+### Notas Importantes
+
+- **Ambos servidores deben estar corriendo** para que los foros funcionen
+- El frontend necesita un servidor HTTP para conectarse correctamente con PocketBase
+- La primera vez que ejecutes el proyecto, PocketBase creará automáticamente las bases de datos necesarias
+- Los puertos 3000 y 8090 deben estar disponibles
+
+---
+
 ¡Disfruta explorando Argentina! 🗺️✨
