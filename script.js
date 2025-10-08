@@ -142,7 +142,7 @@ console.log("✅ Mapa cargado exitosamente con", lugares.length, "lugares");
 const GENERAL_PLACE_ID = "general";
 // URL del backend desplegado en Render
 const POCKETBASE_URL =
-  window.POCKETBASE_URL || "https://mapa-argentina-interactive.onrender.com";
+  window.POCKETBASE_URL || "https://mapa-argentina-interactivo.onrender.com";
 const FORUM_COLLECTION = "forum_posts";
 
 const generalMessagesContainer = document.getElementById(
