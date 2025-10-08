@@ -140,7 +140,9 @@ console.log("✅ Mapa cargado exitosamente con", lugares.length, "lugares");
 
 // -------- Foro PocketBase --------
 const GENERAL_PLACE_ID = "general";
-const POCKETBASE_URL = window.POCKETBASE_URL || "http://127.0.0.1:8090";
+// URL del backend desplegado en Render
+const POCKETBASE_URL =
+  window.POCKETBASE_URL || "https://mapa-argentina-interactive.onrender.com";
 const FORUM_COLLECTION = "forum_posts";
 
 const generalMessagesContainer = document.getElementById(
