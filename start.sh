@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Script de inicio para PocketBase en Railway
-echo "🚀 Iniciando PocketBase en Railway..."
+# Script de inicio para PocketBase en Render
+echo "🚀 Iniciando PocketBase en Render..."
 
 # Crear directorio de datos si no existe
 mkdir -p /pb/pb_data
@@ -20,5 +20,5 @@ fi
 
 echo "✅ PocketBase listo en puerto $PORT"
 
-# Iniciar PocketBase
-exec ./pocketbase serve --http=0.0.0.0:$PORT --dir=/pb/pb_data
+# Iniciar PocketBase con configuración CORS
+exec ./pocketbase serve --http=0.0.0.0:$PORT --dir=/pb/pb_data --origins="https://mapa-argentina-interactivo.vercel.app,http://localhost:3000"
