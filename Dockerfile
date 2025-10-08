@@ -32,7 +32,7 @@ EXPOSE 8090
 
 # Variables de entorno
 ENV PB_DATA=/pb/pb_data
-ENV PORT=8090
+ENV PORT=10000
 
 # Comando para iniciar PocketBase con el script
 CMD ["./start.sh"]
