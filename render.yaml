@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: mapa-argentina-backend
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: PB_DATA
+        value: /pb/pb_data
+      - key: ALLOWED_ORIGINS
+        value: https://tu-frontend-url.com,http://localhost:3000
+      - key: PB_ENCRYPTION_KEY
+        generateValue: true
+    disk:
+      name: pocketbase-data
+      mountPath: /pb/pb_data
+      sizeGB: 1
